@@ -1,0 +1,35 @@
+.model small;square shape:
+.stack 100h
+.data
+.code
+.main proc
+     
+     
+     mov cx,4
+     mov dx,5
+     
+     
+ level_line:
+   mov bx,dx
+   
+   level_star:
+      
+      
+      mov ah,0eh
+      mov al,'*'
+      int 10h
+      dec bx
+      jnz level_star
+      
+      
+      mov ah,0eh
+      mov al,0dh
+      int 10h
+      mov al,0ah
+      int 10h
+      dec cx
+      jnz level_line
+      
+      end code
+    end main   
+      

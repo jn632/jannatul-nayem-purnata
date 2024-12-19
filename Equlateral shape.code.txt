@@ -1,0 +1,57 @@
+.model small ; Equilateral triangle shapes:
+.stack 100h
+.data
+.code
+.main proc
+     
+     
+     mov cx,5
+  
+  
+row:  
+     
+     
+   push cx
+   mov dx,cx
+   dec dx
+     
+     spaces:
+        
+         mov ah,0Eh
+         mov al,' '
+         int 10h
+         dec dx
+         jnz spaces
+         
+         
+   mov dx,5
+   sub dx,cx
+   shl dx,1
+   inc dx
+   mov bx,dx
+   
+   
+stars:
+    mov ah, 0Eh
+    mov al,'*'
+    int 10h
+    dec bx
+    jnz stars  
+    
+    
+    
+    
+    mov ah,0Eh
+    mov al, 0Dh
+    int 10h
+    mov al, 0Ah
+    int 10h
+    
+    pop cx
+    loop row
+    
+    
+   end code
+end main
+       
+         

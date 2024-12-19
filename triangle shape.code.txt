@@ -1,0 +1,40 @@
+.model small; triangle:
+.stack 100h
+.data
+.code
+.main proc
+     
+     
+     mov cx,6
+     mov dx,1
+     
+     
+ level_line:
+   mov bx,dx
+   
+   level_star:
+      
+      
+      mov ah,0eh
+      mov al,'*'
+      int 10h
+      dec bx
+      jnz level_star
+      
+      
+      mov ah,0eh
+      mov al,0dh
+      int 10h
+      mov al,0ah
+      int 10h 
+      
+      
+      inc dx
+      cmp cx,dx
+      
+      jnz level_line
+      
+      end code
+    end main   
+      
+          

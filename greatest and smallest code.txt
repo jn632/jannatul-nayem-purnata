@@ -1,0 +1,76 @@
+.model small
+.stack 100h
+.data    
+   b db 10,13,"Enter 1st number:$"
+  c db 10,13,"Enter 2nd number:$"
+   d  db 10,13,"Greatest Showing result:$" 
+   e db  10,13,"smallest Showing result:$" 
+.code 
+    main proc
+        mov ax,@data
+        mov ds,ax
+        
+        lea dx,b
+        mov ah,9
+        int 21h
+        
+        mov ah,1
+        int 21h
+        mov bh,al
+        
+        lea dx,c
+        mov ah,9
+        int 21h       
+         
+        mov ah,1
+        int 21h
+        mov bl,al
+                  
+        cmp bh,bl
+        jg loop1
+        jl loop2
+        
+         loop1:
+             lea dx,d
+             mov ah,9
+             int 21h             
+             
+             mov ah,2
+             mov dl,bh
+             int 21h
+             
+             lea dx,e
+             mov ah,9
+             int 21h             
+             
+             mov ah,2
+             mov dl,bl
+             int 21h 
+             
+             jg exit       
+         loop2: 
+              lea dx,e
+             mov ah,9
+             int 21h
+                          
+             mov ah,2
+             mov dl,bh
+             int 21h
+             
+             lea dx,d
+             mov ah,9
+             int 21h
+                          
+             mov ah,2
+             mov dl,bl
+             int 21h             
+             
+             jl exit
+        
+        exit:
+         mov ah,4ch
+         int 21h
+         main endp
+    end main
+
+ret
